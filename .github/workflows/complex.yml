@@ -1,0 +1,27 @@
+name: Complex
+on: push
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run on Ubuntu
+        run: date
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Run on Windows
+        run: echo %date%
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: Run on macOS
+        run: date
+
+  depends:
+    runs-on: macos-latest
+    needs: [ubuntu, windows, macos]
+    steps:
+      - name: Dependencies Job
+        run: date
